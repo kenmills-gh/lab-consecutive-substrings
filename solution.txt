@@ -21,7 +21,15 @@ The solution treats the string like an array of characters. It uses two nested l
 - After each character is added, the new substring is pushed to the results array.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Time / Space Complexity:
+Time Complexity:
 
-The algorithm exhibits a quadratic time complexity of O(n^2) if considering only the number of iterations required to visit all substring combinations, but it is more accurately characterized as O(n^3) when accounting for the cost of string concatenation operations as the string length n grows. This is because the outer loop iterates n times, and the inner loop performs progressively longer concatenations for each of the O(n^2) total substrings generated. Similarly, the space complexity is O(n^3) because the memory required to store the resulting array of substrings grows cubically relative to the length of the input, as the total number of characters across all stored substrings increases with the square of the input length.
+The scalable element in this code is 'n', which represents the length of the input string.
+
+- Loop Iterations: The outer loop runs 'n' times. For every iteration of the outer loop, the inner loop runs 'n - i' times. This results in roughly (n * n) / 2 total loop iterations, which simplifies to O(n^2) iterations.
+- Operations inside the loop: Inside the inner loop, we perform string concatenation. In many environments, creating a new string by appending a character takes time proportional to the length of the new string. 
+- Total Time Complexity: Because we are generating O(n^2) substrings, and the average length of these substrings scales with 'n', the strict worst-case Time Complexity is O(n^3).
+
+Space Complexity:
+
+The space complexity is also O(n^3). We are storing (n^2 + n) / 2 total substrings in an array, and the sum of the lengths of all these generated substrings scales cubically as the input string grows.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
